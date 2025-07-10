@@ -177,7 +177,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
                   Join thousands of citizens making a real difference. Report issues, track progress, and build a better future together through the power of technology and community collaboration.
                 </p>
               </div>
-              
+
               <div className="flex flex-wrap gap-4">
                 <Button
                   onClick={() => onNavigateToTab("report")}
@@ -189,8 +189,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
                 </Button>
                 <Button
                   onClick={() => onNavigateToTab("track")}
-                  variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-2xl backdrop-blur-sm"
+                  className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Activity className="mr-3 h-6 w-6" />
                   Explore Issues
@@ -236,7 +235,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
             </div>
           </div>
         </CardContent>
-        
+
         {/* Floating decorations */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
@@ -373,17 +372,17 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
                         <span className="font-semibold">{complaint.upvotes}</span>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <h3 className="font-bold text-lg text-gray-800 line-clamp-2">{complaint.title}</h3>
                       <p className="text-gray-600 text-sm line-clamp-3">{complaint.description}</p>
                     </div>
-                    
+
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <MapPin className="h-4 w-4" />
                       <span className="truncate">{complaint.location}</span>
                     </div>
-                    
+
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <Calendar className="h-4 w-4" />
                       <span>{complaint.date_submitted}</span>
@@ -422,7 +421,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
                 Your voice matters. Join our community of engaged citizens and help build a better tomorrow for everyone.
               </p>
             </div>
-            
+
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 onClick={() => onNavigateToTab("report")}
@@ -433,8 +432,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
               </Button>
               <Button
                 onClick={() => onNavigateToTab("dashboard")}
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-bold rounded-2xl backdrop-blur-sm"
+                className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-4 text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <BarChart3 className="mr-3 h-6 w-6" />
                 Explore Analytics
@@ -442,7 +440,7 @@ export function WelcomeDashboard({ onNavigateToTab }: WelcomeDashboardProps) {
             </div>
           </div>
         </CardContent>
-        
+
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
       </Card>
