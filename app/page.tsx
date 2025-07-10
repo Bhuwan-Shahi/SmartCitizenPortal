@@ -51,6 +51,7 @@ import { AdminDashboard } from "@/components/admin/admin-dashboard"
 import { AdminLogin } from "@/components/auth/admin-login"
 import { DepartmentDashboard } from "@/components/department/department-dashboard"
 import { DepartmentLogin } from "@/components/auth/department-login"
+import { WelcomeDashboard } from "@/components/dashboard/welcome-dashboard"
 
 type Complaint = Database["public"]["Tables"]["complaints"]["Row"]
 
@@ -914,11 +915,16 @@ export default function SmartCitizenPortal() {
   const [isDepartmentUser, setIsDepartmentUser] = useState(false)
   const [departmentId, setDepartmentId] = useState("")
   const [departmentName, setDepartmentName] = useState("")
+  const [activeTab, setActiveTab] = useState("welcome")
 
   const handleDepartmentLogin = (deptId: string, deptName: string) => {
     setDepartmentId(deptId)
     setDepartmentName(deptName)
     setIsDepartmentUser(true)
+  }
+
+  const handleNavigateToTab = (tab: string) => {
+    setActiveTab(tab)
   }
 
   return (
@@ -962,8 +968,15 @@ export default function SmartCitizenPortal() {
         </div>
 
         {/* Enhanced Tabs */}
-        <Tabs defaultValue="report" className="w-full">
-          <TabsList className="grid w-full grid-cols-5 mb-16 h-20 bg-white/80 backdrop-blur-sm shadow-2xl border-0 rounded-3xl p-3">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-6 mb-16 h-20 bg-white/80 backdrop-blur-sm shadow-2xl border-0 rounded-3xl p-3">
+            <TabsTrigger
+              value="welcome"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+            >
+              <Globe className="h-6 w-6" />
+              Welcome
+            </TabsTrigger>
             <TabsTrigger
               value="report"
               className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
@@ -1000,6 +1013,10 @@ export default function SmartCitizenPortal() {
               Department
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="welcome" className="mt-10">
+            <WelcomeDashboard onNavigateToTab={handleNavigateToTab} />
+          </TabsContent>
 
           <TabsContent value="report" className="mt-10">
             <ReportIssueForm />
