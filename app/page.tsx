@@ -23,7 +23,6 @@ import {
   Clock,
   FileText,
   Upload,
-  ThumbsUp,
   BarChart3,
   PieChart,
   Activity,
@@ -38,8 +37,8 @@ import {
   Sparkles,
   ArrowRight,
   Star,
-  Heart,
   MessageSquare,
+  Heart,
 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 import { Toaster } from "@/components/ui/toaster"
@@ -146,7 +145,7 @@ function ReportIssueForm() {
     setIsSubmitting(true)
 
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from("complaints")
         .insert([
           {
@@ -157,9 +156,11 @@ function ReportIssueForm() {
             location: formData.location,
             latitude: latitude,
             longitude: longitude,
+            status: "Pending",
+            upvotes: 0,
+            date_submitted: new Date().toISOString().split('T')[0],
           },
         ])
-        .select()
 
       if (error) throw error
 
@@ -364,6 +365,21 @@ function ReportIssueForm() {
                 />
               </div>
               <p className="text-sm text-gray-500 mt-4">PNG, JPG, GIF up to 10MB each</p>
+              {/* Image preview */}
+              {formData.photos && formData.photos.length > 0 && (
+                <div className="flex flex-wrap gap-4 justify-center mt-6">
+                  {formData.photos.map((file, idx) => (
+                    <div key={idx} className="w-32 h-32 rounded-xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
+                      <img
+                        src={URL.createObjectURL(file)}
+                        alt={`Preview ${idx + 1}`}
+                        className="object-cover w-full h-full"
+                        onLoad={e => URL.revokeObjectURL((e.target as HTMLImageElement).src)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -627,10 +643,10 @@ function TrackComplaints() {
                     variant="outline"
                     size="lg"
                     className="flex items-center gap-3 bg-gradient-to-r from-pink-50 to-rose-50 hover:from-pink-100 hover:to-rose-100 border-2 border-pink-200 hover:border-pink-300 transition-all duration-300 rounded-2xl px-6 py-4"
-                    onClick={() => handleUpvote(complaint.id, complaint.upvotes)}
+                    onClick={() => handleUpvote(complaint.id, complaint.upvotes || 0)}
                   >
                     <Heart className="h-6 w-6 text-pink-500" />
-                    <span className="font-bold text-lg">{complaint.upvotes}</span>
+                    <span className="font-bold text-lg">{complaint.upvotes || 0}</span>
                   </Button>
                   <Button
                     variant="outline"
@@ -796,14 +812,14 @@ function CommunityDashboard() {
                 <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-sm">
                   <PieChart className="h-7 w-7" />
                 </div>
-                Issues by Category
+                Issue Category Breakdown
               </CardTitle>
-              <CardDescription className="text-indigo-100 text-lg">Distribution of community complaints</CardDescription>
+              <CardDescription className="text-indigo-100 text-lg">Distribution of reported issues</CardDescription>
             </div>
           </CardHeader>
           <CardContent className="p-10">
             <div className="space-y-8">
-              {categoryStats.map((stat, index) => (
+              {categoryStats.map((stat) => (
                 <div key={stat.category} className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-xl font-bold text-gray-700">{stat.category}</span>
@@ -855,7 +871,7 @@ function CommunityDashboard() {
                   </div>
                   <div className="flex items-center gap-3 text-sm text-gray-500 bg-pink-50 px-4 py-2 rounded-full">
                     <Heart className="h-4 w-4 text-pink-500" />
-                    <span className="font-bold">{issue.upvotes}</span>
+                    <span className="font-bold">{issue.upvotes || 0}</span>
                   </div>
                 </div>
               ))}
