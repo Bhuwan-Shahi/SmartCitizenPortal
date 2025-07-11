@@ -988,42 +988,42 @@ export default function SmartCitizenPortal() {
           <TabsList className="grid w-full grid-cols-6 mb-16 h-20 bg-white/80 backdrop-blur-sm shadow-2xl border-0 rounded-3xl p-3">
             <TabsTrigger
               value="welcome"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-indigo-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Globe className="h-6 w-6" />
               Welcome
             </TabsTrigger>
             <TabsTrigger
               value="report"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-blue-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Sparkles className="h-6 w-6" />
               Report Issue
             </TabsTrigger>
             <TabsTrigger
               value="track"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-emerald-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Search className="h-6 w-6" />
               Track Complaints
             </TabsTrigger>
             <TabsTrigger
               value="dashboard"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-pink-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-pink-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <BarChart3 className="h-6 w-6" />
               Community Dashboard
             </TabsTrigger>
             <TabsTrigger
               value="admin"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-orange-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-red-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Shield className="h-6 w-6" />
               Admin
             </TabsTrigger>
             <TabsTrigger
               value="department"
-              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-teal-500 data-[state=active]:text-white transition-all duration-500 data-[state=active]:shadow-lg"
+              className="flex items-center gap-4 text-xl font-bold h-14 rounded-2xl transition-all duration-300 hover:text-green-600 data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-teal-500 data-[state=active]:text-white data-[state=active]:shadow-lg"
             >
               <Building2 className="h-6 w-6" />
               Department
