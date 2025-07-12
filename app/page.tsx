@@ -41,7 +41,6 @@ import {
   Heart,
 } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
-import { Toaster } from "@/components/ui/toaster"
 import { supabase, type Database } from "@/lib/supabase"
 import { useGeolocation } from "@/hooks/use-geolocation"
 import { reverseGeocode, calculateDistance } from "@/lib/geocoding"
@@ -1064,7 +1063,6 @@ export default function SmartCitizenPortal() {
           </TabsContent>
         </Tabs>
       </div>
-      <Toaster />
     </div>
   )
 }
